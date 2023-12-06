@@ -1,0 +1,3 @@
+import outils
+
+#moy=outils
