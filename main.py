@@ -13,12 +13,16 @@ longitude = []
 latitude = []
 carburant = []
 coordonnees = []
+villes = []
 
-for i in range(0, 74000, 100):
+"""for i in range(0, 74000, 100):
     url=outils.nom_url(url_api,100,i*100)
-    outils.api(url,latitude, longitude,coordonnees)
+    outils.api(url,latitude, longitude,coordonnees,villes)
 #outils.api(api_url_2,latitude, longitude,coordonnees)
 #outils.api(api_url_3,latitude, longitude,coordonnees)   
-#carte.carte(coordonnees)
+#carte.carte(coordonnees)"""
 
-print(coordonnees)
+url=outils.nom_url(url_api,100,7400)
+outils.api(api_url_1,latitude, longitude,coordonnees,villes)
+
+print(villes)

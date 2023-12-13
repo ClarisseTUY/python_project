@@ -59,10 +59,7 @@ def api(url,latitude, longitude, coordonnees, villes):
                             fermeture = horaires.get("@fermeture", "")
                             print(f"    Ouverture: {ouverture}")
                             print(f"    Fermeture: {fermeture}")
-                elif key == 'ville' and value is not None:      
-                    print(f"{key}: {value}")
-                    ville = value.get('ville', '')
-                    villes.append(ville)
+                
                 else :
                     print(f"{key}: {value}")
 
