@@ -2,7 +2,7 @@ import requests
 import json
 
 
-def api(url,latitude, longitude, coordonnees):
+def api(url,latitude, longitude, coordonnees, villes):
     
     response = requests.get(url)
     # Vérifier si la requête a réussi (statut 200)
@@ -59,8 +59,13 @@ def api(url,latitude, longitude, coordonnees):
                             fermeture = horaires.get("@fermeture", "")
                             print(f"    Ouverture: {ouverture}")
                             print(f"    Fermeture: {fermeture}")
-                else:        
+                elif key == 'ville' and value is not None:      
                     print(f"{key}: {value}")
+                    ville = value.get('ville', '')
+                    villes.append(ville)
+                else :
+                    print(f"{key}: {value}")
+
 
 def moyenne(tableau):
     if not tableau:
@@ -68,3 +73,6 @@ def moyenne(tableau):
     somme = sum(tableau)
     moyenne = somme / len(tableau)
     return moyenne
+
+def nom_url(url, limite, debut):
+    return f"{url}limit={limite}&start={debut}"
