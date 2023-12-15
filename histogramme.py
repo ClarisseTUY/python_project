@@ -1,3 +1,3 @@
 import outils
 
-#moy=outils
+#moy=outils.moyenne()
