@@ -5,6 +5,10 @@ def carte(coordonnees):
     map = folium.Map(location=coords, tiles='OpenStreetMap', zoom_start=6)
 
     for element in coordonnees:
-        folium.Marker(location=element, popup = "Coucou").add_to(map)
-        map.save(outfile='map.html')
-    
+        # Vérifier la validité des coordonnées
+        if len(element) == 2:
+            folium.Marker(location=element, popup="Coucou").add_to(map)
+        else:
+            continue
+
+    map.save(outfile='map.html')
