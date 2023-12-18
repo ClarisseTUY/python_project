@@ -1,6 +1,7 @@
 import outils
 import carte
-#import dashboard
+import api
+import dashboard
 
 api_url_1 = "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-carburants-fichier-quotidien-test-ods/records?limit=100"
 url_api = "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-carburants-fichier-quotidien-test-ods/records?"
@@ -16,19 +17,14 @@ coordonnees = []
 villes = []
 nom_carburant = []
 prix_carburant = []
+prix_id = []
 urls=[]
 
-#nombre_occurence=outils.api_nombre(url_api)
 urls = [outils.nom_url(url_api, 100, i) for i in range(0, 9899, 100)]
-    #outils.api(url,latitude, longitude,coordonnees,villes,nom_carburant,prix_carburant)
-    #print(url)
 
-outils.requetes_simultanees(urls,longitude,latitude,coordonnees,villes,nom_carburant,prix_carburant)
+api.requetes_simultanees(urls,longitude,latitude,coordonnees,villes,nom_carburant,prix_carburant,prix_id)
 
 carte.carte(coordonnees)
-
- #print(coordonnees)
-# Chemin du fichier texte
 
 
 #dashboard.run_server(debug=True)

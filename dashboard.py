@@ -1,61 +1,58 @@
-# filename = 'dash-01.py'
-
-#
-# Imports
-#
-
-import plotly_express as px
-
+import pandas as pd
+import plotly.express as px
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc, html
 
-#
-# Data
-#
+# Création de données factices pour les prix du carburant
+data = {
+    'Fuel Type': ['Gazole', 'Diesel', 'Gasoline', 'Diesel', 'Gasoline'],
+    'Price': [2.5, 2.3, 2.6, 2.4, 2.7],
+    'City': ['City A', 'City A', 'City B', 'City B', 'City C']
+}
 
-year = 2002
+# Conversion des données en DataFrame pandas
+df = pd.DataFrame(data)
 
-gapminder = px.data.gapminder() # (1)
-years = gapminder["year"].unique()
-data = { year:gapminder.query("year == @year") for year in years} # (2)
+# Initialisation de l'application Dash
+app = dash.Dash(__name__)
 
-#
-# Main
-#
+# Création du graphique
+fig = px.bar(
+    df,
+    x='Fuel Type',
+    y='Price',
+    color='Fuel Type',
+    barmode='group',
+    labels={'Price': 'Prix (€)', 'Type de carburants': 'Fuel Type'},
+    title='Fuel Prices in Different Cities'
+)
 
-if __name__ == '__main__':
-
-    app = dash.Dash(__name__) # (3)
-
-    fig = px.scatter(data[year], x="gdpPercap", y="lifeExp",
-                        color="continent",
-                        size="pop",
-                        hover_name="country") # (4)
-
-
-    app.layout = html.Div(children=[
-
-                            html.H1(children=f'Life expectancy vs GDP per capita ({year})',
-                                        style={'textAlign': 'center', 'color': '#7FDBFF'}), # (5)
-
-                            dcc.Graph(
-                                id='graph1',
-                                figure=fig
-                            ), # (6)
-
-                            html.Div(children=f'''
-                                The graph above shows relationship between life expectancy and
-                                GDP per capita for year {year}. Each continent data has its own
-                                colour and symbol size is proportionnal to country population.
-                                Mouse over for details.
-                            '''), # (7)
-
+# Mise en page de l'application Dash
+app.layout = html.Div(
+    style={'backgroundColor': '#000000'},  # Ajout de la couleur de fond
+    children=[
+        html.H1(
+            children='Bonjourrrrrrrrrrrrrrr',
+            style={
+                'textAlign': 'center',
+                'color': '#7FDBFF',
+                'fontFamily': 'Arial, sans-serif',
+                'fontSize': '36px',
+                'fontWeight': 'bold',
+                'textShadow': '2px 2px 4px #000000'
+            }
+        ),
+        dcc.Graph(
+            id='graph1',
+            figure=fig
+        ),
+        html.Div(
+            children='Bar chart displaying fuel prices for different fuel types in various cities.'
+        ),
     ]
-    )
+)
 
-    #
-    # RUN APP
-    #
 
-    #app.run_server(debug=True) # (8)
+# Exécution de l'application Dash
+if __name__ == '__main__':
+    app.run_server(debug=True)
