@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt
 import outils
 
-def moyenne_carburants(prix_id,result_info,prix_moyens,carburant1_data, nom_carburant1):
+"""def moyenne_carburants(prix_id,result_info,prix_moyens,carburant1_data, nom_carburant1):
     prix_moyens = []
 
-    if result_info.get('prix_id', '') == 1:
+    if result_info.get('prix_id', '') == 1:"""
 
 
 def histogramme(prix_moyens):
