@@ -25,6 +25,8 @@ urls = [outils.nom_url(url_api, 100, i) for i in range(0, 9899, 100)]
 
 api.requetes_simultanees(urls,longitude,latitude,coordonnees,villes,nom_carburant,prix_carburant,prix_id)
 
+carte.carte(coordonnees)
+
 def open_browser():
       webbrowser.open("http://127.0.0.1:8050/")
 
