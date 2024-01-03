@@ -138,7 +138,7 @@ def creer_dashboard(prix_carburant, nom_carburant):
         html.Button("Menu", id="open-offcanvas"),
         offcanvas,
         html.H1(
-            children='Bonjourrrrrrrrrrrrrrr',
+            children='Stations services en France',
             style={'text-align': 'center'},
         ),
         html.Br(),
