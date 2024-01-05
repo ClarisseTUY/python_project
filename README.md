@@ -16,6 +16,7 @@ Le dashboard est constitué de deux onglets : carte et histogramme
 Pour accéder à l'un des deux il suffit de cliquer sur l'un des onglets.
 Dans l'onglet carte, comme son nom l'indique, on trouvera une carte, dans laquelle nous pouvons observer la répartitions des stations services en France. La carte est interactive, plusieurs informations sont données lorsque l'on clique sur une station. 
 Dans l'onglet histogramme, on trouve l'histogramme de la moyenne des prix des carburants. Pour chaque types de carburants, une moyenne des prix est calculée et affichée.
+Un Menu est également disponible, dans lequel on peut retrouver les noms du binômes qui ont constité ce projet mais également l'API utilisé pour les données dynamique. 
 
 Des captures d'écran ou des exemples pour illustrer l'utilisation.
 
@@ -26,12 +27,12 @@ Les conclusions principales extraites des données :
 Introduction :
 
 Contexte de l'analyse : Les stations services en France
-Objectifs de l'analyse des données : Proposer une page utilisant des données dynamiques, où les stations sont placées, peuvent être repérée facilement, obtenir des informations sur les horaires, prix des carburants, les types de carburants disponibles, etc..
+Objectifs de l'analyse des données : Proposer une page utilisant des données dynamiques, où les stations sont placées/géolocalisées, peuvent être repérées facilement, obtenir des informations sur les horaires, prix des carburants, les types de carburants disponibles, etc..
 
 Analyse des Données :
 
 Principales étapes de l'analyse des données : 
-Graphiques (histogramme) et carte qui résument les conclusions.
+Graphique(histogramme) et carte.
 
 Principales Conclusions :
 
@@ -44,8 +45,14 @@ Le guide du développeur doit fournir des informations sur l'architecture du cod
 
 Architecture du Code :
 
-Description de la structure des dossiers et des fichiers.
-Explication des composants principaux.
+Description de la structure des dossiers et des fichiers : 
+- fichier main.py, le fichier principal qui nous permet de lancer le dashboard depuis son execution
+- fichier outils.py, le fichier contenant les différents calculs effectués pour réaliser l'histogramme (calculs de moyenne)
+- fichier dashboard.py, le fichier dans lequel on constitu le dahsboard, on effectu la mise en page, les couleurs, et l'importation de l'histogramme et de la carte
+- fichier carte.py, le fichier dans lequel on créer la carte, on ajoute des popup sur chaque station géolocalisé et lui attribuons ses valeurs recupérée depuis la lecture de l'API
+- fichier api.py, dans ce fichier, on récupère les informations de l'API pour remplir nos différents tableaux/listes de données qui seront utilisés dans nos autres fichiers comme carte.py ou encore outils.py
+
+
 
 Dépendances :
 
