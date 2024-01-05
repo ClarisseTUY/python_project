@@ -50,7 +50,7 @@ def get_data(url):
         print(f"Error: {e}")
         return []
 
-def requetes_simultanees(urls,longitude,latitude,coordonnees,villes,nom_carburant,prix_carburant,prix_id):
+def requetes_simultanees(urls,longitude,latitude,coordonnees,noms_villes,nom_carburant,prix_carburant,prix_id):
     with concurrent.futures.ThreadPoolExecutor() as executor:
         # Récupération des résultats
         results = list(executor.map(get_data, urls))
@@ -61,7 +61,7 @@ def requetes_simultanees(urls,longitude,latitude,coordonnees,villes,nom_carburan
             longitude.append(result_info.get('longitude', ''))
             latitude.append(result_info.get('latitude', ''))
             coordonnees.append(result_info.get('coordonnees', ''))
-            villes.append(result_info.get('ville', ''))
+            noms_villes.append(result_info.get('ville', ''))
             nom_carburant.append(result_info.get('nom_carburant', ''))
             prix_carburant.append(result_info.get('prix_carburant', ''))
             prix_id.append(result_info.get('prix_id', ''))
