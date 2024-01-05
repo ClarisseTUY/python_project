@@ -24,7 +24,7 @@ prix_id = []
 urls=[]
 urls = [outils.nom_url(url_api, 100, i) for i in range(0, 9899, 100)]
 
-api.requetes_simultanees(urls,longitude,latitude,coordonnees,noms_villes,nom_carburant,prix_carburant,prix_id)
+api.requetes_simultanees(urls,longitude,latitude,coordonnees,noms_villes,nom_carburant,prix_carburant,prix_id,horaires)
 
 carte.carte(coordonnees, noms_villes, horaires, nom_carburant)
 
