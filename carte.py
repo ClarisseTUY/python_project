@@ -3,9 +3,31 @@ from folium.plugins import MarkerCluster
 from unidecode import unidecode
 
 def nettoyer_nom_ville(nom_ville):
+    """
+    Nettoie le nom de la ville en retirant les caractères spéciaux.
+    
+    Arguments :
+    nom_ville : string : Le nom de la ville à nettoyer
+    
+    Returns :
+    string : Le nom de la ville nettoyé
+    """
     return unidecode(nom_ville)
 
 def carte(coordonnees, noms_villes, horaires, nom_carburant, prix_carburant):
+    """
+    Crée une carte interactive avec des marqueurs pour chaque station service.
+
+    Arguments :
+    coordonnees : list : Liste de tuples (latitude, longitude) des stations services
+    noms_villes : list : Liste des noms des villes
+    horaires : list : Liste des horaires des stations services
+    nom_carburant : list : Liste des noms des carburants
+    prix_carburant : list : Liste des prix des carburants
+
+    Returns :
+    Une carte interactive sauvegardée en tant que fichier HTML ('map.html')
+    """
     coords = (46.539758, 2.430331)
     map = folium.Map(location=coords, tiles='OpenStreetMap', zoom_start=5)
     marker_cluster=MarkerCluster().add_to(map)
