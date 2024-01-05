@@ -100,21 +100,21 @@ def createOffCanvas():
     """
     # Création d'un élément canvas
     offcanvas = dbc.Offcanvas(
-        id="offcanvas",
-        title="Options", # Titre affiché en haut du canvas
-        children=[ # Contenu du canvas
-            dbc.Checklist(
-                options=[ # Liste des options de la liste de contrôle
-                    {"label": "Option 1", "value": 1},
-                    {"label": "Option 2", "value": 2},
-                    {"label": "Option 3", "value": 3},
-                ],
-                inline=True, # Aligne les checkboxes horizontalement
-                style={'margin': '10px'} # Style pour espacer les éléments dans la liste de contrôle
-            ),
-        ],
-    )
+    id="offcanvas",
+    title="Menu",
+    children=[
+        dbc.ListGroup(
+            [
+                dbc.ListGroupItem("Auteurs", id="auteurs"),
+                dbc.ListGroupItem("Données utilisées", id="donnees"),
+            ]
+        ),
+        html.Div(id="menu-content")  # Cette div affichera les informations selon la sélection
+    ]
+)
     return offcanvas # Renvoie l'élément canvas créé
+
+
 
 def creer_dashboard(prix_carburant, nom_carburant):
     """
@@ -154,6 +154,28 @@ def creer_dashboard(prix_carburant, nom_carburant):
         if n1:
             return not is_open
         return is_open
+    @app.callback(
+        Output("menu-content", "children"),
+        Input("auteurs", "n_clicks"),
+        Input("donnees", "n_clicks"),
+    )
+    
+    def display_content(auteurs_clicks, donnees_clicks):
+        ctx = dash.callback_context
+        if ctx.triggered_id == "auteurs":
+            return html.Div([
+                html.H4("Auteurs : "),
+                dcc.Markdown("Clarisse TUY"),
+                dcc.Markdown("Julie TESSON")
+            ])
+        elif ctx.triggered_id == "donnees":
+            return html.Div([
+                html.H4("Informations sur les Données utilisées"),
+                dcc.Markdown("Données dynamiques : "),
+                dcc.Markdown("API : https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-carburants-fichier-quotidien-test-ods/records?")
+            ])
+        else:
+            return html.Div()  # Retourne une div vide par défaut
     
     # Lancement du serveur Dash
     app.run_server(debug=True, port=8050, use_reloader=False)
