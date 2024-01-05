@@ -3,6 +3,15 @@ import json
 import concurrent.futures
 
 def get_data(url):
+    """
+    Récupère les données depuis une URL et les formate en fonction des clés spécifiées.
+
+    Arguments :
+    url : string : URL pour récupérer les données.
+
+    Retourne :
+    list : Liste contenant les informations formatées extraites de l'URL.
+    """
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -56,6 +65,23 @@ def get_data(url):
         return []
 
 def requetes_simultanees(urls,longitude,latitude,coordonnees,villes,nom_carburant,prix_carburant,prix_id,horaires):
+    """
+    Effectue des requêtes simultanées vers plusieurs URLs et récupère les informations des résultats.
+
+    Arguments :
+    urls : list : Liste des URLs à requêter.
+    longitude : list : Liste pour stocker les longitudes.
+    latitude : list : Liste pour stocker les latitudes.
+    coordonnees : list : Liste pour stocker les coordonnées.
+    villes : list : Liste pour stocker les noms de ville.
+    nom_carburant : list : Liste pour stocker les noms des carburants.
+    prix_carburant : list : Liste pour stocker les prix des carburants.
+    prix_id : list : Liste pour stocker les IDs des prix des carburants.
+    horaires : list : Liste pour stocker les horaires.
+
+    Retourne :
+    None
+    """
     with concurrent.futures.ThreadPoolExecutor() as executor:
         # Récupération des résultats
         results = list(executor.map(get_data, urls))
