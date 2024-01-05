@@ -7,6 +7,8 @@ Déploiement :
 
 Liste des prérequis logiciels ou de configuration nécessaires sur la machine cible :
 - visual studio
+- avoir installé ou installer l'extension python 
+- avoir une version récente de pip
 - installer les packages additionnels requis avec la commande suivante : $ python -m pip install -r installation.txt
 Lors de l'execution du fichier main.py, le dashboard s'ouvrira de lui même sur une page web.  
 
