@@ -22,6 +22,7 @@ def get_data(url):
                     horaires_data = json.loads(value)
                     automate_24_24 = horaires_data.get("@automate-24-24", "")
                     jours = horaires_data.get("jour", [])
+                    horaires_list = []
                     for jour in jours:
                         jour_nom = jour.get("@nom", "")
                         horaires = jour.get("horaire", [])
@@ -29,9 +30,13 @@ def get_data(url):
                             for horaire in horaires:
                                 ouverture = horaire.get("@ouverture", "")
                                 fermeture = horaire.get("@fermeture", "")
+                                horaires_list.append((ouverture, fermeture))
                         else:
                             ouverture = horaires.get("@ouverture", "")
                             fermeture = horaires.get("@fermeture", "")
+                            horaires_list.append((ouverture, fermeture))
+                    result_info['horaires'] = horaires_list
+
                     result_info['automate_24_24'] = automate_24_24
                 elif key == 'ville' and value is not None:
                     result_info['ville'] = value
@@ -50,7 +55,7 @@ def get_data(url):
         print(f"Error: {e}")
         return []
 
-def requetes_simultanees(urls,longitude,latitude,coordonnees,noms_villes,nom_carburant,prix_carburant,prix_id):
+def requetes_simultanees(urls,longitude,latitude,coordonnees,villes,nom_carburant,prix_carburant,prix_id,horaires):
     with concurrent.futures.ThreadPoolExecutor() as executor:
         # Récupération des résultats
         results = list(executor.map(get_data, urls))
@@ -61,7 +66,14 @@ def requetes_simultanees(urls,longitude,latitude,coordonnees,noms_villes,nom_car
             longitude.append(result_info.get('longitude', ''))
             latitude.append(result_info.get('latitude', ''))
             coordonnees.append(result_info.get('coordonnees', ''))
-            noms_villes.append(result_info.get('ville', ''))
+            villes.append(result_info.get('ville', ''))
             nom_carburant.append(result_info.get('nom_carburant', ''))
             prix_carburant.append(result_info.get('prix_carburant', ''))
             prix_id.append(result_info.get('prix_id', ''))
+            horaires.append(result_info.get('horaires', ''))  
+         
+
+
+
+
+           
