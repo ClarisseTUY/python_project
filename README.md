@@ -6,40 +6,37 @@ Comment déployer et utiliser le dashboard sur une autre machine :
 Déploiement :
 
 Liste des prérequis logiciels ou de configuration nécessaires sur la machine cible :
-- visual studio
-- avoir installé ou installer l'extension python 
-- avoir une version récente de pip
-- installer les packages additionnels requis avec la commande suivante : $ python -m pip install -r installation.txt
-Lors de l'execution du fichier main.py, le dashboard s'ouvrira de lui même sur une page web.  
+- Visual Studio Code installé.
+- L'extension Python pour Visual Studio Code installée.
+
+Exécutez le script principal main.py, et le tableau de bord s'ouvrira automatiquement dans un navigateur Web.
+
 
 Utilisation :
 
-Le dashboard est constitué de deux onglets : carte et histogramme
-Pour accéder à l'un des deux il suffit de cliquer sur l'un des onglets.
-Dans l'onglet carte, comme son nom l'indique, on trouvera une carte, dans laquelle nous pouvons observer la répartitions des stations services en France. La carte est interactive, plusieurs informations sont données lorsque l'on clique sur une station. 
-Dans l'onglet histogramme, on trouve l'histogramme de la moyenne des prix des carburants. Pour chaque types de carburants, une moyenne des prix est calculée et affichée.
-Un Menu est également disponible, dans lequel on peut retrouver les noms du binômes qui ont constité ce projet mais également l'API utilisé pour les données dynamique. 
+Le tableau de bord est composé de deux onglets : "Carte" et "Histogramme".
 
-Des captures d'écran ou des exemples pour illustrer l'utilisation.
+Onglet Carte
+Cet onglet affiche une carte interactive montrant la répartition des stations-service en France. La carte est interactive, et des informations détaillées sur une station sont affichées lorsqu'elle est sélectionnée.
+
+Onglet Histogramme
+Cet onglet affiche un histogramme représentant la moyenne des prix des carburants. Chaque type de carburant est représenté avec sa moyenne de prix.
+
+Menu
+Le menu propose des informations sur les auteurs du projet et fournit des détails sur l'API utilisée pour les données dynamiques.
 
 
 2. Rapport d'Analyse : 
-Les conclusions principales extraites des données :
 
-Introduction :
+Introduction
+Le projet se concentre sur l'analyse des stations-service en France. L'objectif est de fournir un tableau de bord interactif utilisant des données dynamiques pour localiser et obtenir des informations sur les stations.
 
-Contexte de l'analyse : Les stations services en France
-Objectifs de l'analyse des données : Proposer une page utilisant des données dynamiques, où les stations sont placées/géolocalisées, peuvent être repérées facilement, obtenir des informations sur les horaires, prix des carburants, les types de carburants disponibles, etc..
+Analyse des Données
+L'analyse se compose principalement d'un histogramme des prix moyens des carburants et d'une carte interactive.
 
-Analyse des Données :
+Principales Conclusions
+Certaines régions présentent une concentration plus élevée de stations, tandis que d'autres en ont moins, indiquant des inégalités de répartition.
 
-Principales étapes de l'analyse des données : 
-Graphique(histogramme) et carte.
-
-Principales Conclusions :
-
-Résumé des principales observations tirées des données : Certains endroit possède plusieurs stations, alors que d'autre pas du tout. On constate donc certaines inégalités de répartition. 
-Interprétation des tendances ou des points forts : 
 
 3. Developer Guide
 
@@ -47,28 +44,22 @@ Le guide du développeur doit fournir des informations sur l'architecture du cod
 
 Architecture du Code :
 
-Description de la structure des dossiers et des fichiers : 
-- fichier main.py, le fichier principal qui nous permet de lancer le dashboard depuis son execution
-- fichier outils.py, le fichier contenant les différents calculs effectués pour réaliser l'histogramme (calculs de moyenne)
-- fichier dashboard.py, le fichier dans lequel on constitu le dahsboard, on effectu la mise en page, les couleurs, et l'importation de l'histogramme et de la carte
-- fichier carte.py, le fichier dans lequel on créer la carte, on ajoute des popup sur chaque station géolocalisé et lui attribuons ses valeurs recupérée depuis la lecture de l'API
-- fichier api.py, dans ce fichier, on récupère les informations de l'API pour remplir nos différents tableaux/listes de données qui seront utilisés dans nos autres fichiers comme carte.py ou encore outils.py
+La structure du code se compose des fichiers suivants :
+- main.py : Le fichier principal pour lancer le tableau de bord.
+- outils.py : Ce fichier regroupe des fonctions utilitaires essentielles, utilisées dans l'ensemble du programme.
+- dashboard.py : Construit le tableau de bord, gère la mise en page, les couleurs, et intègre l'histogramme et la carte.
+- carte.py : Crée la carte interactive avec des popups pour chaque station.
+- api.py : Récupère les informations de l'API pour remplir les tableaux de données.
 
-
-
-Dépendances :
-
-Liste des dépendances ou bibliothèques utilisées dans le projet : 
-requests
-folium
-plotly-express
-dash
-dash-core-components
-dash-html-components
-matplotlib
-unidecode
+Dépendances : 
+- requests
+- folium
+- plotly-express
+- dash
+- dash-core-components
+- dash-html-components
+- matplotlib
+- unidecode
 
 Modification ou Extension :
-
-Instructions pour ajouter de nouvelles fonctionnalités ou modifier des parties spécifiques du code.
-Conventions de codage ou recommandations pour maintenir la cohérence du code.
+Pour ajouter de nouvelles fonctionnalités ou modifier des parties spécifiques du code, suivez les conventions de codage pour maintenir la cohérence.

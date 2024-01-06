@@ -151,6 +151,16 @@ def creer_dashboard(prix_carburant, nom_carburant):
         [State("offcanvas", "is_open")],
     )
     def toggle_offcanvas(n1, is_open):
+        """
+        Fonction pour basculer l'état du canvas off.
+
+        Arguments : 
+        n1 : nombre de clics sur le bouton déclenchant la fonction
+        is_open : état actuel du canvas off
+
+        Returns:
+        bool : Nouvel état du canvas off
+        """
         if n1:
             return not is_open
         return is_open
@@ -161,6 +171,16 @@ def creer_dashboard(prix_carburant, nom_carburant):
     )
     
     def display_content(auteurs_clicks, donnees_clicks):
+        """
+        Affiche le contenu du menu en fonction des clics.
+
+        Arguments : 
+        auteurs_clicks : nombre de clics sur l'onglet 'Auteurs'
+        donnees_clicks : nombre de clics sur l'onglet 'Données utilisées'
+
+        Returns:
+        html.Div : Contenu à afficher dans le menu
+        """
         ctx = dash.callback_context
         if ctx.triggered_id == "auteurs":
             return html.Div([
@@ -179,4 +199,3 @@ def creer_dashboard(prix_carburant, nom_carburant):
     
     # Lancement du serveur Dash
     app.run_server(debug=True, port=8050, use_reloader=False)
-

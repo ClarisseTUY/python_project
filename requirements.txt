@@ -1,5 +1,8 @@
-python -m pip install requests
-
-python -m pip install folium
-
-https://community.plotly.com/t/how-to-remove-legend-name-from-hover-info-but-keep-custom-hover-template/49558
+requests
+folium
+plotly-express
+dash
+dash-core-components
+dash-html-components
+matplotlib
+unidecode
